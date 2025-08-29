@@ -13947,3 +13947,27 @@ button:not(:disabled) {
    .mr-10{
     margin-right:10px;
   }
+  .back-float {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M15 18l-6-6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 24px 24px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  --tw-bg-opacity: 1;
+  background-color: #f29620;
+  --tw-text-opacity: 1;
+  color: #030304;
+}
+
+.back-float:hover {
+  background-color: #45f882;
+}
