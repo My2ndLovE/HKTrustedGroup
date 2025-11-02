@@ -51,7 +51,7 @@ The `app.css` file uses:
 - Google Fonts (Orbitron family)
 
 ### Important Patterns
-- Version control via query parameters (`?v=2.5` on assets)
+- Version control via query parameters (`?v=2.6` on assets)
 - WebP image format for performance
 - Responsive design with mobile-first approach
 - Promotional cards with interactive shuffle animations
