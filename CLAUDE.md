@@ -7,30 +7,39 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Since this is a static website without a build process:
 - **Run locally**: Open HTML files directly in browser or use a local server like `python -m http.server 8000` or VS Code Live Server
 - **Test changes**: Refresh browser to see changes immediately
-- **Deploy**: Copy files to web server (no build step required)
+- **Deploy**: Deployed on Cloudflare Pages (automatic deployment on push to master branch)
 
 ## Architecture
 
-### Multi-Brand Structure
-The codebase contains three casino brands under HK Trusted Group:
-- `default/` - Main HK Trusted Group site (uses `assets_default/` folder for styles and assets)
-- `hk8/` - HK8 casino brand (HKD 88 signup bonus) - uses `assets/` folder
-- `w8/` - W8HK betting platform (HKD 80 bonus + lottery) - uses `assets/` folder
-- `d9/` - Dragon9 casino (HKD 60 bonus with auto-rebate) - uses `assets/` folder
+### URL Structure (Cloudflare Pages Friendly)
+The site uses a folder-based URL structure optimized for Cloudflare Pages:
 
-Each brand directory contains bilingual versions:
-- `index_cn.html` - Chinese version
-- `index_en.html` - English version
+**Root Domain:**
+- `/` (root) - Main HK Trusted Group site (Chinese) - served from `index.html`
+- `/en/` - Main HK Trusted Group site (English) - served from `en/index.html`
+
+**Brand Sites:**
+Each brand has separate Chinese and English folders:
+- `/hk8/` - HK8 Chinese (HKD 88 signup bonus)
+- `/hk8en/` - HK8 English
+- `/w8/` - W8HK Chinese (HKD 80 bonus + lottery)
+- `/w8en/` - W8HK English
+- `/d9/` - Dragon9 Chinese (HKD 60 bonus with auto-rebate)
+- `/d9en/` - Dragon9 English
+- `/gt88/` - GT88 Chinese (HKD 100 bonus)
+- `/gt88en/` - GT88 English
+- `/mb8/` - MB8 Chinese (HKD 90 bonus)
+- `/mb8en/` - MB8 English
 
 ### Asset Organization
-- `assets/` - Shared assets for hk8, w8, and d9 brand sites
+- `assets/` - Shared assets for all brand sites (hk8, w8, d9, gt88, mb8)
   - `fonts/` - Custom Borda fonts and Tabler icons
   - `images/` - Game images, company logos, promotional materials
   - `js/` - JavaScript files (app.js for card shuffle, main.js for general functionality)
   - `styles/app.css` - Main stylesheet (261KB) containing all styling
-- `assets_default/` - Separate assets specifically for the default folder site
+- `assets_default/` - Separate assets specifically for root site
   - Contains its own styles, images, and JavaScript files
-  - Used exclusively by the main HK Trusted Group site in `default/` folder
+  - Used exclusively by root `index.html` and `/en/index.html`
 
 ### Key JavaScript Functionality
 - **app.js**: Implements card shuffling animation for promotional cards and Swiper slider initialization
@@ -55,4 +64,13 @@ The `app.css` file uses:
 - WebP image format for performance
 - Responsive design with mobile-first approach
 - Promotional cards with interactive shuffle animations
-- Multi-language support through separate HTML files
+- Multi-language support through separate folders (Cloudflare Pages friendly)
+- Each language version is in its own folder with `index.html`
+- Language switchers use absolute paths (e.g., `/d9` for Chinese, `/d9en` for English)
+
+### Cloudflare Pages Configuration
+- **Root directory**: Leave empty (default: `/`)
+- **Build command**: None (static site)
+- **Build output directory**: `/`
+- The root `index.html` serves the main site homepage
+- All brand folders are automatically routed by Cloudflare Pages
