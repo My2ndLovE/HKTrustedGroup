@@ -24,7 +24,7 @@ Each brand has separate Chinese and English folders:
 - `/hk8en/` - HK8 English
 - `/w8/` - W8HK Chinese (HKD 80 bonus + lottery)
 - `/w8en/` - W8HK English
-- `/d9/` - Dragon9 Chinese (HKD 60 bonus with auto-rebate)
+- `/d9/` - Dragon9 Chinese (HKD 88 bonus with auto-rebate)
 - `/d9en/` - Dragon9 English
 - `/gt88/` - GT88 Chinese (HKD 100 bonus)
 - `/gt88en/` - GT88 English
